@@ -2,18 +2,16 @@ name: CI Pipeline for Agent Evaluation
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   evaluate:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-      
-    - name: Setup Python environment
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.11'
@@ -21,11 +19,32 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        # Install exact required libraries for Linux
+        pip install fastapi uvicorn langgraph langchain-groq langchain-community langchain-core chromadb python-dotenv pydantic requests fastembed datasets
         
     - name: Run Evaluation Gate
       env:
         GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-        CI: true
+        CI: "true"
       run: |
+        # 1. Start the API in the background and save logs to a file
+        nohup python -m uvicorn main:app --host 127.0.0.1 --port 8000 > server_log.txt 2>&1 &
+        
+        # 2. WAIT for the server to be ready (Health Check)
+        echo "Waiting for API to start..."
+        for i in {1..20}; do
+          if curl -s http://127.0.0.1:8000/ > /dev/null; then
+            echo "API is UP!"
+            break
+          fi
+          echo "Still waiting ($i/20)..."
+          sleep 5
+          if [ $i -eq 20 ]; then
+            echo "ERROR: API failed to start. Showing logs:"
+            cat server_log.txt
+            exit 1
+          fi
+        done
+        
+        # 3. Run the evaluation script
         python run_eval.py
