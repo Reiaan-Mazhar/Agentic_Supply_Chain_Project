@@ -19,8 +19,8 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        # Added pypdf and langchain-chroma for PDF processing
-        pip install fastapi uvicorn langgraph langchain-groq langchain-community langchain-core chromadb python-dotenv pydantic requests fastembed datasets pypdf langchain-chroma
+        # Added langgraph-checkpoint-sqlite to fix the persistence error
+        pip install fastapi uvicorn langgraph langgraph-checkpoint-sqlite langchain-groq langchain-community langchain-core chromadb python-dotenv pydantic requests fastembed datasets pypdf langchain-chroma
         
     - name: Build Knowledge Base (Lab 2 Requirement)
       env:
