@@ -18,17 +18,19 @@ class AgentState(TypedDict):
 # Use a slightly faster model if capacity is an issue, or stick to 70b
 llm = ChatGroq(model="llama-3.3-70b-versatile", timeout=30)
 
+# --- NODES ---
 def researcher_node(state: AgentState):
-    # Researcher ONLY sees the search tool
-    prompt = "You are a Researcher. You MUST use 'search_knowledge_base' to find facts. Once you have facts, say 'HANDOVER'."
-    model = llm.bind_tools([search_knowledge_base]) 
+    # DONT tell it HOW to use the tool, just give it a goal.
+    prompt = "You are a logistics researcher. Find facts about shipments and port status. If found, summarize and say 'HANDOVER'."
+    model = llm.bind_tools([search_knowledge_base])
     return {"messages": [model.invoke([{"role": "system", "content": prompt}] + state["messages"])], "sender": "researcher"}
 
 def manager_node(state: AgentState):
-    # Manager ONLY sees the risk tool
-    prompt = "You are a Manager. If you see numbers, use 'calculate_risk_score'. Provide a final text answer starting with 'FINAL ASSESSMENT:'"
+    # DONT tell it HOW to use the tool, just give it a goal.
+    prompt = "You are a risk manager. Provide a final assessment. Include a numerical risk score if appropriate. End with 'FINAL'."
     model = llm.bind_tools([calculate_risk_score])
     return {"messages": [model.invoke([{"role": "system", "content": prompt}] + state["messages"])], "sender": "manager"}
+
 
 def router(state: AgentState):
     last_msg = state["messages"][-1]
