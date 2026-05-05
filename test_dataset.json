@@ -1,0 +1,18 @@
+[
+  {
+    "question": "What is the status of the strike in Singapore?",
+    "ground_truth": "The strike in Singapore is causing delays at the main port terminal."
+  },
+  {
+    "question": "Check the status of shipment SN-202.",
+    "ground_truth": "Shipment SN-202 is currently held at customs for inspection."
+  },
+  {
+    "question": "What is the risk score for a severity of 8 and inventory of 20?",
+    "ground_truth": "The calculated risk score is 70/100."
+  },
+  {
+    "question": "How does the port strike affect logistics?",
+    "ground_truth": "Port strikes lead to container congestion and increased lead times."
+  }
+]

@@ -1,0 +1,86 @@
+[SYSTEM]: Starting Session midterm_exam_01...
+
+========================================
+LAB 5: HITL SAFETY BREAKPOINT
+========================================
+Agent wants to call: search_knowledge_base
+Current Arguments: {'query': 'strike in Singapore SN-202 status risk calculation'}
+
+Choose: (y) Approve, (e) Edit Arguments, (n) Exit: y
+
+--- ACTION ---
+times apply. Section 4.2: Current Regional Alerts Port of Singapore (SGSIN): CODE RED (Labor Strike). Port of Karachi (PKKHI): CODE GREEN. Port of Kaohsiung (TWKHH): CODE AMBER (Congestion). Expect 5-7 day delays.
+
+Title: NEXUS GLOBAL COMPONENT REGISTRY (2024.Q1) 1. Critical Components  NX-101 Microchip: Safety Stock: 500 units | Origin: Taiwan (Port of Kaohsiung) | Lead Time: 45 Days.  SN-202 Sensor: Safety Stock: 200 units | Origin: Singapore (Port of Singapore) | Lead Time: 14 Days.  PW-303 Power Cell:
+
+Title: LOGISTICS SOP: PORT DISRUPTION PROTOCOLS Section 4.1: Port Status Codes CODE RED (Strike/Closure): Minimum delay +15 days. Expedited air-freight mandatory if safety stock < 20%. CODE AMBER (Congestion): Minimum delay +5 days. CODE GREEN (Operational): Standard lead times apply. Section 4.2:
+
+Title: CORPORATE RISK ASSESSMENT FORMULA Risk Score Calculation: Score = (Event Severity * 10) + (Days Delayed * 2) - (Inventory Buffers) Thresholds:  0-40: Low Risk (Monitor).  41-70: Medium Risk (Alert Logistics).  71-100: Critical Risk (Trigger HITL Approval for Rerouting).
+
+========================================
+LAB 5: HITL SAFETY BREAKPOINT
+========================================
+Agent wants to call: search_knowledge_base
+Current Arguments: {'query': 'SN-202 Sensor supply chain map'}
+
+Choose: (y) Approve, (e) Edit Arguments, (n) Exit: y
+
+--- ACTION ---
+Title: NEXUS GLOBAL COMPONENT REGISTRY (2024.Q1) 1. Critical Components  NX-101 Microchip: Safety Stock: 500 units | Origin: Taiwan (Port of Kaohsiung) | Lead Time: 45 Days.  SN-202 Sensor: Safety Stock: 200 units | Origin: Singapore (Port of Singapore) | Lead Time: 14 Days.  PW-303 Power Cell:
+
+Title: TIER-1 SUPPLIER DIRECTORY  TSMC (Taiwan): Supplies NX-101. Reliability: 98%.  Sing-Tech (Singapore): Primary supplier for SN-202. Reliability: 95%.  Viet-Energy (Vietnam): Supplies PW-303. Reliability: 90%.
+
+Human-in-the- Loop (HITL) approval by the Supply Chain Manager.
+
+14 Days.  PW-303 Power Cell: Safety Stock: 1000 units | Origin: Vietnam (Port of Hai Phong) | Lead Time: 30 Days. 2. Storage Constraints SN-202 requires vacuum sealing. PW-303 is classified as Hazardous Class 9.
+
+========================================
+LAB 5: HITL SAFETY BREAKPOINT
+========================================
+Agent wants to call: search_knowledge_base
+Current Arguments: {'query': 'strike in Singapore impact on SN-202 Sensor production and logistics'}
+
+Choose: (y) Approve, (e) Edit Arguments, (n) Exit: y
+
+--- ACTION ---
+times apply. Section 4.2: Current Regional Alerts Port of Singapore (SGSIN): CODE RED (Labor Strike). Port of Karachi (PKKHI): CODE GREEN. Port of Kaohsiung (TWKHH): CODE AMBER (Congestion). Expect 5-7 day delays.
+
+Title: NEXUS GLOBAL COMPONENT REGISTRY (2024.Q1) 1. Critical Components  NX-101 Microchip: Safety Stock: 500 units | Origin: Taiwan (Port of Kaohsiung) | Lead Time: 45 Days.  SN-202 Sensor: Safety Stock: 200 units | Origin: Singapore (Port of Singapore) | Lead Time: 14 Days.  PW-303 Power Cell:
+
+Title: LOGISTICS SOP: PORT DISRUPTION PROTOCOLS Section 4.1: Port Status Codes CODE RED (Strike/Closure): Minimum delay +15 days. Expedited air-freight mandatory if safety stock < 20%. CODE AMBER (Congestion): Minimum delay +5 days. CODE GREEN (Operational): Standard lead times apply. Section 4.2:
+
+Title: QUALITY CONTROL & PACKAGING REQUIREMENTS Components originating from Singapore (SGSIN) must undergo "Salt-Mist Inspection" if transit time exceeds 20 days. This adds a flat $500 cost to the logistics budget.
+
+--- RESEARCHER ---
+HANDOVER TO MANAGER
+
+--- MANAGER ---
+:
+
+
+========================================
+LAB 5: HITL SAFETY BREAKPOINT
+========================================
+Agent wants to call: calculate_risk_score
+Current Arguments: {'inventory_level': 10, 'severity': 9}
+
+Choose: (y) Approve, (e) Edit Arguments, (n) Exit: y
+
+--- ACTION ---
+The calculated risk score is 85.0/100.
+
+--- RESEARCHER ---
+HANDOVER TO MANAGER
+
+--- MANAGER ---
+
+
+The strike in Singapore has resulted in a labor strike, which has affected the production and logistics of the SN-202 Sensor. The current inventory buffer is 10 units, and the severity of the event is 9.
+
+Based on the calculate_risk_score function, the risk score is 85.0/100, which indicates a critical risk. The logistics SOP: Port Disruption Protocols state that a CODE RED (Strike/Closure) results in a minimum delay of +15 days, and expedited air-freight is mandatory if the safety stock is < 20%.
+
+Therefore, it is recommended to trigger the HITL approval for rerouting and to expedite air-freight to mitigate the delays. Additionally, the components originating from Singapore must undergo a "Salt-Mist Inspection" if the transit time exceeds 20 days, which will add a flat $500 cost to the logistics budget.
+
+The manager should review the situation and take necessary actions to minimize the impact of the strike on the production and logistics of the SN-202 Sensor.
+
+[SYSTEM]: Goal Reached.

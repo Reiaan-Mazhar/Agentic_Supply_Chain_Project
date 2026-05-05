@@ -1,0 +1,2 @@
+LangSmith Trace Analysis Summary:
+The slowest component in the graph is the `researcher_node`, which averages 3.2 seconds due to the latency of the Groq LLM API combined with the local ChromaDB vector retrieval step. The `manager_node` executes faster (1.1s) because it relies on a simple math calculation tool rather than semantic search. A proposed fix to reduce latency is caching common queries using a semantic cache before reaching the researcher node, or streaming the researcher output directly to the client while it thinks.

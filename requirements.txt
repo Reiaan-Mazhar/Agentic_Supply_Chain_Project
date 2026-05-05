@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+langgraph
+langchain-groq
+langchain-community
+langchain-core
+chromadb
+python-dotenv
+pydantic
+requests
+fastembed
+datasets
+ragas

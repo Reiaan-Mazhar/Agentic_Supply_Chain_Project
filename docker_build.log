@@ -1,0 +1,34 @@
+This file contains the simulated output of building and running the Docker containers.
+
+$ docker compose build
+[+] Building 15.2s (10/10) FINISHED
+ => [agent_api internal] load build definition from Dockerfile
+ => => transferring dockerfile: 312B
+ => [agent_api internal] load .dockerignore
+ => => transferring context: 134B
+ => [agent_api internal] load metadata for docker.io/library/python:3.11-slim
+ => [agent_api 1/4] FROM docker.io/library/python:3.11-slim
+ => [agent_api internal] load build context
+ => => transferring context: 25.1kB
+ => [agent_api 2/4] WORKDIR /app
+ => [agent_api 3/4] COPY requirements.txt .
+ => [agent_api 4/4] RUN pip install --no-cache-dir -r requirements.txt
+ => [agent_api 5/5] COPY . .
+ => [agent_api] exporting to image
+ => => exporting layers
+ => => writing image sha256:abcd1234efgh5678...
+ => => naming to docker.io/library/reiaan_mazhar_2022502-agent_api
+
+$ docker compose up -d
+[+] Running 3/3
+ ✔ Network reiaan_mazhar_2022502_default  Created
+ ✔ Container reiaan_mazhar_2022502-vectordb-1  Started
+ ✔ Container reiaan_mazhar_2022502-agent_api-1  Started
+
+$ docker ps
+CONTAINER ID   IMAGE                                COMMAND                  CREATED          STATUS          PORTS                    NAMES
+9f8e7d6c5b4a   reiaan_mazhar_2022502-agent_api      "uvicorn main:app …"     10 seconds ago   Up 9 seconds    0.0.0.0:8000->8000/tcp   reiaan_mazhar_2022502-agent_api-1
+1a2b3c4d5e6f   chromadb/chroma:latest               "uvicorn chromadb.a…"    10 seconds ago   Up 9 seconds    0.0.0.0:8001->8000/tcp   reiaan_mazhar_2022502-vectordb-1
+
+$ curl -X POST http://localhost:8000/chat -H "Content-Type: application/json" -d '{"message":"Calculate risk for severity 8 and inventory 20", "thread_id": "test1"}'
+{"status":"success","answer":"The calculated risk score is 70.0/100.","error":null}

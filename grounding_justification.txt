@@ -1,0 +1,5 @@
+The agent needs this private data because a general LLM (like Llama-3) 
+does not know our specific contract terms with "Global Tech Logistics" 
+or our internal "PART-101" lead times. Without this RAG pipeline, 
+the agent would hallucinate dates and legal terms, which is dangerous 
+in a supply chain environment.
