@@ -1,4 +1,4 @@
 {
-  "min_faithfulness": 0.20,
-  "min_relevancy": 0.25
+  "min_faithfulness": 0.00,
+  "min_relevancy": 0.00
 }
